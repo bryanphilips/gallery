@@ -2,14 +2,8 @@ pipeline{
     agent any
     
     stages{
-        stage ('Clonning gallery Master Branch'){
-            steps{
-                
-           // git 'https://github.com/bryanphilips/gallery.git'
-           checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bryanphilips/gallery.git']])
-            }
-          }
         stage ('Build'){
+            //Build the app by installing the dependencies
             steps {
                 sh 'npm install' 
             }
@@ -22,5 +16,5 @@ pipeline{
         }
           
         }
-    }
+    
 }
