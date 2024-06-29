@@ -1,6 +1,6 @@
 pipeline{
     agent any
-     tools {nodejs "nodejs"}
+     tools {node "node"}
     stages{
         stage ('Build'){
             //Build the app by installing the dependencies
