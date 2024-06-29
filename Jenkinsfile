@@ -8,7 +8,7 @@ pipeline{
             steps {
                 sh 'npm install' 
             }
-            
+
         }
     
         stage ('Serve the App'){
@@ -20,3 +20,4 @@ pipeline{
         }
 
 }
+
