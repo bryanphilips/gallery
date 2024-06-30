@@ -1,32 +1,49 @@
 pipeline{
     agent any
      tools {  nodejs 'nodejs'  }
-    stages{
-
-        
-        stage ('Build'){
-            //Build the app by installing the dependencies
-            steps {
-                sh 'echo "Cloning..."'
-                git 'https://github.com/bryanphilips/gallery.git'
-                sh 'echo "Building..."'
-                sh 'npm install' 
-            }
-
-        }
-    
+    stages{        
+         
         stage ('Test'){
           steps {
-                sh 'echo "Testing..." ' 
-                echo 'the project runs well '
+            script{
+                docker.image('node:17').inside { c ->
+                 echo 'Building..'
+                 sh 'npm install'
+                 echo 'Testing..'
+                 sh 'npm test'
+                 sh "docker logs ${c.id}"
             }
+               
+            }
+          }
         }
-         stage ('Deploy'){
-            //Build the app by installing the dependencies
+         stage ('Build and Push docker image'){
+            
             steps {
                 sh 'echo "Deploying..."' 
+                  script {
+                    def dockerImage = docker.build("gallery/gallery-image:latest")
+                    // sh 'docker build ./gallery/ -t gallery-image:latest'
+                    docker.withRegistry('', 'gallery-docker') {
+                        dockerImage.push('latest')
+                    }
+                }
+
             }
          }
+         stage('Deploy to docker') {
+            environment {
+                DOCKER_HOST_CREDENTIALS = credentials('gallery-docker')
+            }
+            steps {
+                script {
+                    
+                    sh 'docker stop gallery-image'
+                    sh 'docker rm gallery-image'                                     
+                    sh 'docker run --name gallery -p 5000:5000/tcp -d gallery-image'
+                }
+            }
+        }
     }
         post {
         always {
