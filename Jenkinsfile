@@ -20,12 +20,9 @@ pipeline{
             
             steps {
                 sh 'echo "Deploying..."' 
-                  script {
-                    def dockerImage = docker.build("gallery/gallery-image:latest")
-                    // sh 'docker build ./gallery/ -t gallery-image:latest'
-                    docker.withRegistry('', 'gallery-docker') {
-                        dockerImage.push('latest')
-                    }
+                  script {                    
+                    sh 'docker build ./gallery/ -t gallery-image:latest'
+                    
                 }
 
             }
