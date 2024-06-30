@@ -7,6 +7,7 @@ pipeline{
         stage ('Build'){
             //Build the app by installing the dependencies
             steps {
+                git 'https://github.com/bryanphilips/gallery.git'
                 bat 'npm install' 
             }
 
