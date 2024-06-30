@@ -6,6 +6,6 @@ config.mongoURI = {
     development: 'mongodb+srv://philips:root@moringa0.0to2jfw.mongodb.net/?retryWrites=true&w=majority&appName=Moringa0',
     test: 'mongodb+srv://philips:root@moringa0.0to2jfw.mongodb.net/?retryWrites=true&w=majority&appName=Moringa0',
     
-   
+   //connection working
 }
 module.exports = config;
