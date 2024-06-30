@@ -7,10 +7,7 @@ pipeline{
 
         stage ('Cloning Project '){
             steps{
-                git (
-                    url:"https://github.com/bryanphilips/gallery.git",
-                    branch: "master"
-                )
+                git 'https://github.com/bryanphilips/gallery.git'
                 
             }
         }
