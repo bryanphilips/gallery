@@ -11,6 +11,7 @@ pipeline{
                     url:"https://github.com/bryanphilips/gallery.git",
                     branch: "master"
                 )
+                
             }
         }
 
