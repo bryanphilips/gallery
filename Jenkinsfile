@@ -10,6 +10,7 @@ pipeline{
                 git 'https://github.com/bryanphilips/gallery.git'
                 
             }
+            
         }
 
         stage ('Build'){
