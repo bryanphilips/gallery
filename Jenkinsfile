@@ -1,31 +1,30 @@
 pipeline{
     agent any
-    //   tools {
-    //     nodejs 'nodejs'
-    //   }
+    tools {  nodejs 'node'  }
     stages{
 
-        stage ('Cloning Project '){
-            steps{
-                git 'https://github.com/bryanphilips/gallery.git'
-                
-            }
-            
-        }
-
+        
         stage ('Build'){
             //Build the app by installing the dependencies
             steps {
-                sh 'npm install' 
+                bat 'npm install' 
             }
 
         }
     
         stage ('Serve the App'){
           steps {
-                sh 'node server' 
+                bat 'node server' 
             }
         }
+         stage ('Test'){
+            //Build the app by installing the dependencies
+            steps {
+                bat 'npm test' 
+            }
+
+        }
+    
           
         }
 }
