@@ -20,17 +20,17 @@ pipeline{
             
             steps {
                 sh 'echo "Deploying..."' 
-                  script {                    
-                    sh 'docker build ./gallery/ -t gallery-image:latest'
+                //   script {                    
+                //     sh 'docker build ./gallery/ -t gallery-image:latest'
                     
-                }
+                // }
 
             }
          }
          stage('Deploy to docker') {
-            environment {
-                DOCKER_HOST_CREDENTIALS = credentials('gallery-docker')
-            }
+            // environment {
+            //     DOCKER_HOST_CREDENTIALS = credentials('gallery-docker')
+            // }
             steps {
                 script {
                     
