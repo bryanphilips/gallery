@@ -5,17 +5,16 @@ pipeline{
          
         stage ('Test'){
           steps {
-            script{
-                docker.image('node:17').inside { c ->
+            
                  echo 'Building..'
                  sh 'npm install'
                  echo 'Testing..'
                  sh 'npm test'
-                 sh "docker logs ${c.id}"
+                
             }
                
-            }
-          }
+            
+          
         }
          stage ('Build and Push docker image'){
             
