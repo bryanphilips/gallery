@@ -6,7 +6,6 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../server';
 //var server = require('../server');
-
 var should = chai.should();
 var expect = chai.expect;
 
