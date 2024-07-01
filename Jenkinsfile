@@ -15,25 +15,22 @@ pipeline{
                
                      
         }
-         stage ('Build docker image'){
+        //  stage ('Build and tag docker image'){
             
-            steps {
-                script {                    
-                    sh 'docker build -t gallery/gallery-image:$BUILD_NUMBER .'
-                    
-                }
-
-            }
-         }
-        //  stage('Run Docker image') {
-        //     // environment {
-        //     //     DOCKER_HOST_CREDENTIALS = credentials('gallery-docker')
-        //     // }
         //     steps {
-        //         script {
+        //         script {                    
+        //             sh 'docker build -t gallery-image .' 
+        //             sh 'docker tag gallery-image:latest p801/galleryapp:v2.0'
                     
-                                                     
-        //             sh 'docker run --name gallery -p 5000:5000/tcp -d gallery-image'
+        //         }
+
+        //     }
+        //  }
+        //  stage('Push Build Docker image format') {
+        //      {
+        //         script {
+                                                                         
+        //             sh 'docker push p801/galleryapp:v2.0'
         //         }
         //     }
         // }
@@ -57,5 +54,4 @@ pipeline{
     }
   }
     
-
 
