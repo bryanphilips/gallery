@@ -15,25 +15,25 @@ pipeline{
                
                      
         }
-        //  stage ('Build and tag docker image'){
+         stage ('Build and tag docker image'){
             
-        //     steps {
-        //         script {                    
-        //             sh 'docker build -t gallery-image .' 
-        //             sh 'docker tag gallery-image:latest p801/galleryapp:v2.0'
+            steps {
+                script {                    
+                    sh 'docker build -t gallery-image .' 
+                    sh 'docker tag gallery-image:latest p801/galleryapp:v2.0'
                     
-        //         }
+                }
 
-        //     }
-        //  }
-        //  stage('Push Build Docker image format') {
-        //      {
-        //         script {
+            }
+         }
+         stage('Push Build Docker image format') {
+             {
+                script {
                                                                          
-        //             sh 'docker push p801/galleryapp:v2.0'
-        //         }
-        //     }
-        // }
+                    sh 'docker push p801/galleryapp:v2.0'
+                }
+            }
+        }
     }
         post {
         always {
