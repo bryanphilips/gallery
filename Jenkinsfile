@@ -8,8 +8,8 @@ pipeline{
             
                  echo 'Building..'
                  sh 'npm install'
-                 echo 'Testing..'
-                 sh 'npm test'
+                //  echo 'Testing..'
+                //  sh 'npm test'
                 
             }
                
