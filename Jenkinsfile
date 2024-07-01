@@ -27,18 +27,18 @@ pipeline{
 
             }
          }
-         stage('Run Docker image') {
-            // environment {
-            //     DOCKER_HOST_CREDENTIALS = credentials('gallery-docker')
-            // }
-            steps {
-                script {
+        //  stage('Run Docker image') {
+        //     // environment {
+        //     //     DOCKER_HOST_CREDENTIALS = credentials('gallery-docker')
+        //     // }
+        //     steps {
+        //         script {
                     
                                                      
-                    sh 'docker run --name gallery -p 5000:5000/tcp -d gallery-image'
-                }
-            }
-        }
+        //             sh 'docker run --name gallery -p 5000:5000/tcp -d gallery-image'
+        //         }
+        //     }
+        // }
     }
         post {
         always {
