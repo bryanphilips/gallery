@@ -20,7 +20,7 @@ pipeline{
             
             steps {
                 script {                    
-                    sh 'docker build -t gallery/gallery-image .'
+                    sh 'docker build -t docker/gallery-image .'
                     
                 }
 
