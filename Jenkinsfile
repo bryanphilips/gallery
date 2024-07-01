@@ -8,19 +8,18 @@ pipeline{
             
                  echo 'Building..'
                  sh 'npm install'
-                 echo 'Funding..'
-                 sh 'npm fund'
+                //  echo 'Funding..'
+                //  sh 'npm fund'
                 
             }
                
-            
-          
+                     
         }
          stage ('Build docker image'){
             
             steps {
                 script {                    
-                    sh 'docker build -t gallery/gallery-image .'
+                    sh 'docker build -t gallery/gallery-image:$BUILD_NUMBER .'
                     
                 }
 
