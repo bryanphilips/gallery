@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 
 //var chai = require('chai');
 //var chaiHttp = require('chai-http');
-import chai from 'chai'
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 
 var server = require('../server');
