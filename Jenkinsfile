@@ -16,26 +16,25 @@ pipeline{
             
           
         }
-         stage ('Build and Push docker image'){
+         stage ('Build docker image'){
             
             steps {
-                sh 'echo "Deploying..."' 
-                //   script {                    
-                //     sh 'docker build ./gallery/ -t gallery-image:latest'
+                sh 'echo "Building..."' 
+                  script {                    
+                    sh 'docker build -t gallery/gallery-image .'
                     
-                // }
+                }
 
             }
          }
-         stage('Deploy to docker') {
+         stage('Run Docker image') {
             // environment {
             //     DOCKER_HOST_CREDENTIALS = credentials('gallery-docker')
             // }
             steps {
                 script {
                     
-                    sh 'docker stop gallery-image'
-                    sh 'docker rm gallery-image'                                     
+                                                     
                     sh 'docker run --name gallery -p 5000:5000/tcp -d gallery-image'
                 }
             }
