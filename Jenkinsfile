@@ -3,7 +3,7 @@ pipeline{
      tools {  nodejs 'nodejs'  }
     stages{        
          
-        stage ('Test'){
+        stage ('Npm Install and Test'){
           steps {
             
                  echo 'Building..'
@@ -19,8 +19,7 @@ pipeline{
          stage ('Build docker image'){
             
             steps {
-                sh 'echo "Building..."' 
-                  script {                    
+                script {                    
                     sh 'docker build -t gallery/gallery-image .'
                     
                 }
