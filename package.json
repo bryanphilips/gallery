@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module",
+  
   "scripts": {
     "test": "mocha --exit"
   },
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
-    "chai-http": "^5.0.0",
-    "mocha": "^10.5.2"
+    "chai-http": "^1.0.0",
+    "mocha": "^8.1.1"
   }
 }

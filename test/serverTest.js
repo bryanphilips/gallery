@@ -1,11 +1,11 @@
 process.env.NODE_ENV = 'test';   
 
-// var chai = require('chai');
-// var chaiHttp = require('chai-http');
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import server from '../server.js';
-// var server = require('../server.cjs');
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+// import chai from 'chai';
+// import chaiHttp from 'chai-http';
+// import server from '../server.js';
+var server = require('../server');
 var should = chai.should();
 var expect = chai.expect;
 
