@@ -26,3 +26,4 @@ describe('Photos', function(){
         })
     });
 })
+
