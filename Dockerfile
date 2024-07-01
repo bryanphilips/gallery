@@ -8,13 +8,9 @@ COPY package*.json ./
 
 RUN npm install
 
-RUN npm fund
-
-RUN npm audit
+RUN npm audit fix
 
 COPY . .
-
-
 
 EXPOSE 5000
 
