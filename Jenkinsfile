@@ -27,7 +27,7 @@ pipeline{
                 echo 'Deploying...' 
                 // https://github.com/bryanphilips/gallery/tree/master
     //            withCredentials([usernameColonPassword(credentialsId: 'render-auth', variable: 'RENDER_CREDENTIALS' )]){
-      sh 'git push https://${RENDER_CREDENTIALS}@render.com/bryanphilips/gallery master'
+    //   sh 'git push https://${RENDER_CREDENTIALS}@render.com/bryanphilips/gallery master'
     }
 
             }
