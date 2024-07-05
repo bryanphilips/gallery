@@ -24,7 +24,7 @@ pipeline{
             }}
          stage('Deploy to Render'){
             steps{
-                echo 'Deploying...' 
+                echo 'Deploying via webhook' 
                 // https://github.com/bryanphilips/gallery/tree/master
     //            withCredentials([usernameColonPassword(credentialsId: 'render-auth', variable: 'RENDER_CREDENTIALS' )]){
     //   sh 'git push https://${RENDER_CREDENTIALS}@render.com/bryanphilips/gallery master'
@@ -56,19 +56,31 @@ pipeline{
     }
         post {
         always {
-            sh 'echo "Cleaning up..."'
+            sh 'echo "Notify build results by email'
         }
-        
+          
+                
         success {
+             script{
+                slackSend ("message:${currentBuild.result} build ${env.BUILD_NUMBER} url (<${env.BUILD_URL}|Open>)")
+            }
+            
             mail to: 'bryan.philip@student.moringaschool.com',
-                 subject: 'Pipeline Succeeded',
-                 body: 'Your test has completed successfully.'
+                 subject: "SUCCESS:${currentBuild.fullDisplayName}",
+                 body: "${currentBuild.result} Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}"
+
+            
         }
         
         failure {
+            script{
+                slackSend ("message:${currentBuild.result} build ${env.BUILD_NUMBER} url (<${env.BUILD_URL}|Open>)")
+            }
+            
             mail to: 'bryan.philip@student.moringaschool.com',
-                 subject: 'Pipeline Failed',
-                 body: 'Your test has failed. Please investigate.'
+                 subject: "FAILURE: ${currentBuild.fullDisplayName}",
+                 body: "${currentBuild.result} Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}"
+            
         }
     }
   
